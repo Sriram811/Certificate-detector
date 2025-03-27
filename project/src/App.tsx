@@ -7,6 +7,7 @@ import AdminRegister from './components/auth/AdminRegister';
 import Home from './pages/Home';
 import Layout from './components/layout/Layout';
 import Admin from './pages/Admin';
+import Landing from './pages/Landing';
 
 const theme = createTheme({
   palette: {
@@ -26,14 +27,28 @@ function App() {
   return (
     <ThemeProvider theme={theme}>
       <BrowserRouter>
-        <Layout>
-          <Routes>
-            <Route path="/" element={loggedIn ? <Home /> : <Login setLoggedIn={setLoggedIn} setIsAdmin={setIsAdmin} />} />
-            <Route path="/register" element={<Register />} />
-            <Route path="/admin-register" element={<AdminRegister />} />
-            <Route path="/admin" element={isAdmin ? <Admin /> : <Navigate to="/" />} />
-          </Routes>
-        </Layout>
+        <Routes>
+          <Route path="/" element={<Landing />} />
+          <Route path="/login" element={<Login setLoggedIn={setLoggedIn} setIsAdmin={setIsAdmin} />} />
+          <Route
+            path="/dashboard"
+            element={
+              <Layout>
+                {loggedIn ? <Home /> : <Navigate to="/login" />}
+              </Layout>
+            }
+          />
+          <Route path="/register" element={<Register />} />
+          <Route path="/admin-register" element={<AdminRegister />} />
+          <Route
+            path="/admin"
+            element={
+              <Layout>
+                {isAdmin ? <Admin /> : <Navigate to="/login" />}
+              </Layout>
+            }
+          />
+        </Routes>
       </BrowserRouter>
     </ThemeProvider>
   );

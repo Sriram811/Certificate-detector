@@ -34,6 +34,7 @@ export default function CertificateList({ certificates, onRemove }: CertificateL
 
   return (
     <Box sx={{ mt: 4 }}>
+
       <Typography variant="h5" sx={{ mb: 3 }}>
         Certificates
       </Typography>

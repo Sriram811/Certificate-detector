@@ -58,15 +58,54 @@ export default function Register() {
         alignItems: 'center',
         minHeight: '100vh',
         pt: 8,
+        bgcolor: '#121212',
+        background: 'linear-gradient(45deg, #000000 30%, #424242 90%)',
       }}
     >
-      <Card sx={{ p: 4, maxWidth: 400, width: '100%' }}>
-        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mb: 3 }}>
-          <PersonAddIcon sx={{ fontSize: 40, color: 'primary.main', mb: 2 }} />
-          <Typography component="h1" variant="h5">
+      <Card
+        sx={{
+          p: 4,
+          maxWidth: 400,
+          width: '100%',
+          bgcolor: '#1E1E1E',
+          boxShadow: '0 10px 20px rgba(0,0,0,0.4)',
+          borderRadius: 2,
+          transform: 'perspective(1000px) rotateX(0deg)',
+          transition: 'all 0.3s ease',
+          '&:hover': {
+            transform: 'perspective(1000px) translateY(-5px)',
+            boxShadow: '0 15px 30px rgba(0,0,0,0.6)',
+          },
+        }}
+      >
+        <Box
+          sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            mb: 3
+          }}
+        >
+          <PersonAddIcon
+            sx={{
+              fontSize: 40,
+              color: '#90CAF9',
+              mb: 2,
+              filter: 'drop-shadow(0 0 10px rgba(144, 202, 249, 0.5))'
+            }}
+          />
+          <Typography
+            component="h1"
+            variant="h5"
+            sx={{
+              color: 'white',
+              textShadow: '2px 2px 4px rgba(0,0,0,0.3)'
+            }}
+          >
             Sign up
           </Typography>
         </Box>
+
         <TextField
           fullWidth
           label="Full Name"
@@ -76,7 +115,22 @@ export default function Register() {
           autoFocus
           value={formData.name}
           onChange={handleChange}
+          sx={{
+            '& .MuiOutlinedInput-root': {
+              color: 'white',
+              '& fieldset': {
+                borderColor: 'rgba(144, 202, 249, 0.5)',
+              },
+              '&:hover fieldset': {
+                borderColor: '#90CAF9',
+              },
+            },
+            '& .MuiInputLabel-root': {
+              color: '#90CAF9',
+            },
+          }}
         />
+
         <TextField
           fullWidth
           label="Email Address"
@@ -85,7 +139,22 @@ export default function Register() {
           autoComplete="email"
           value={formData.email}
           onChange={handleChange}
+          sx={{
+            '& .MuiOutlinedInput-root': {
+              color: 'white',
+              '& fieldset': {
+                borderColor: 'rgba(144, 202, 249, 0.5)',
+              },
+              '&:hover fieldset': {
+                borderColor: '#90CAF9',
+              },
+            },
+            '& .MuiInputLabel-root': {
+              color: '#90CAF9',
+            },
+          }}
         />
+
         <TextField
           fullWidth
           label="Password"
@@ -95,7 +164,22 @@ export default function Register() {
           autoComplete="new-password"
           value={formData.password}
           onChange={handleChange}
+          sx={{
+            '& .MuiOutlinedInput-root': {
+              color: 'white',
+              '& fieldset': {
+                borderColor: 'rgba(144, 202, 249, 0.5)',
+              },
+              '&:hover fieldset': {
+                borderColor: '#90CAF9',
+              },
+            },
+            '& .MuiInputLabel-root': {
+              color: '#90CAF9',
+            },
+          }}
         />
+
         <TextField
           fullWidth
           label="Confirm Password"
@@ -105,17 +189,58 @@ export default function Register() {
           autoComplete="new-password"
           value={formData.confirmPassword}
           onChange={handleChange}
+          sx={{
+            '& .MuiOutlinedInput-root': {
+              color: 'white',
+              '& fieldset': {
+                borderColor: 'rgba(144, 202, 249, 0.5)',
+              },
+              '&:hover fieldset': {
+                borderColor: '#90CAF9',
+              },
+            },
+            '& .MuiInputLabel-root': {
+              color: '#90CAF9',
+            },
+          }}
         />
+
         <Button
           fullWidth
           variant="contained"
-          sx={{ mt: 3, mb: 2 }}
+          sx={{
+            mt: 3,
+            mb: 2,
+            bgcolor: '#90CAF9',
+            color: '#000000',
+            transform: 'translateZ(0)',
+            transition: 'all 0.3s ease',
+            '&:hover': {
+              bgcolor: '#64B5F6',
+              transform: 'translateZ(10px) scale(1.02)',
+              boxShadow: '0 10px 20px rgba(0,0,0,0.4)',
+            },
+          }}
           onClick={handleRegister}
         >
           Sign Up
         </Button>
+
         <Box sx={{ textAlign: 'center' }}>
-          <Link component={RouterLink} to="/" variant="body2">
+          <Link
+            component={RouterLink}
+            to="/"
+            variant="body2"
+            sx={{
+              color: '#90CAF9',
+              textDecoration: 'none',
+              transition: 'all 0.3s ease',
+              '&:hover': {
+                color: '#64B5F6',
+                textDecoration: 'underline',
+              },
+            }}
+          >
             {"Already have an account? Sign In"}
           </Link>
         </Box>

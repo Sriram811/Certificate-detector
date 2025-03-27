@@ -1,7 +1,20 @@
 import { useState } from 'react';
 import { Link as RouterLink, useNavigate } from 'react-router-dom';
-import { TextField, Button, Card, Typography, Link, Box } from '@mui/material';
+import { TextField, Button, Card, Typography, Link, Box, createTheme, ThemeProvider } from '@mui/material';
 import { Shield } from 'lucide-react';
+
+const darkTheme = createTheme({
+  palette: {
+    mode: 'dark',
+    primary: {
+      main: '#90caf9',
+    },
+    background: {
+      default: '#000000',
+      paper: '#111111',
+    },
+  },
+});
 
 export default function AdminRegister() {
   const navigate = useNavigate();
@@ -53,85 +66,261 @@ export default function AdminRegister() {
   };
 
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        minHeight: '100vh',
-        pt: 8,
-      }}
-    >
-      <Card sx={{ p: 4, maxWidth: 400, width: '100%' }}>
-        <Box sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', mb: 3 }}>
-          <Shield size={40} style={{ marginBottom: '16px', color: '#1976d2' }} />
-          <Typography component="h1" variant="h5">
-            Admin Registration
-          </Typography>
-        </Box>
-        <TextField
-          fullWidth
-          label="Full Name"
-          name="name"
-          margin="normal"
-          autoComplete="name"
-          autoFocus
-          value={formData.name}
-          onChange={handleChange}
-        />
-        <TextField
-          fullWidth
-          label="Email Address"
-          name="email"
-          margin="normal"
-          autoComplete="email"
-          value={formData.email}
-          onChange={handleChange}
-        />
-        <TextField
-          fullWidth
-          label="Password"
-          name="password"
-          type="password"
-          margin="normal"
-          autoComplete="new-password"
-          value={formData.password}
-          onChange={handleChange}
-        />
-        <TextField
-          fullWidth
-          label="Confirm Password"
-          name="confirmPassword"
-          type="password"
-          margin="normal"
-          autoComplete="new-password"
-          value={formData.confirmPassword}
-          onChange={handleChange}
-        />
-        <TextField
-          fullWidth
-          label="Admin Registration Code"
-          name="adminCode"
-          type="password"
-          margin="normal"
-          helperText="Enter the secure admin code provided by your organization"
-          value={formData.adminCode}
-          onChange={handleChange}
-        />
-        <Button
-          fullWidth
-          variant="contained"
-          sx={{ mt: 3, mb: 2 }}
-          onClick={handleRegister}
+    <ThemeProvider theme={darkTheme}>
+      <Box
+        sx={{
+          display: 'flex',
+          flexDirection: 'column',
+          alignItems: 'center',
+          minHeight: '100vh',
+          pt: 8,
+          bgcolor: 'background.default',
+          perspective: '1500px',
+          overflow: 'hidden',
+          position: 'relative',
+          '&::before': {
+            content: '""',
+            position: 'absolute',
+            top: 0,
+            left: 0,
+            right: 0,
+            bottom: 0,
+            background: 'radial-gradient(circle at center, #000000 0%, #0a0a0a 100%)',
+            animation: 'pulse 8s ease-in-out infinite',
+          },
+          '@keyframes pulse': {
+            '0%': { opacity: 0.5 },
+            '50%': { opacity: 0.8 },
+            '100%': { opacity: 0.5 },
+          }
+        }}
+      >
+        <Card
+          sx={{
+            p: 4,
+            maxWidth: 400,
+            width: '100%',
+            bgcolor: 'background.paper',
+            transform: 'rotateX(5deg)',
+            transition: 'all 0.3s ease',
+            boxShadow: '0 10px 30px rgba(144, 202, 249, 0.2)',
+            '&:hover': {
+              transform: 'rotateX(0deg) translateY(-10px)',
+              boxShadow: '0 20px 40px rgba(144, 202, 249, 0.3)',
+            }
+          }}
         >
-          Register as Admin
-        </Button>
-        <Box sx={{ textAlign: 'center' }}>
-          <Link component={RouterLink} to="/" variant="body2">
-            {"Back to Login"}
-          </Link>
-        </Box>
-      </Card>
-    </Box>
+          <Box sx={{
+            display: 'flex',
+            flexDirection: 'column',
+            alignItems: 'center',
+            mb: 3,
+            animation: 'fadeIn 0.5s ease-out'
+          }}>
+            <Shield
+              size={40}
+              style={{
+                marginBottom: '16px',
+                color: '#90caf9',
+                animation: 'float 3s ease-in-out infinite'
+              }}
+            />
+            <Typography
+              component="h1"
+              variant="h5"
+              sx={{
+                color: 'primary.main',
+                textShadow: '0 0 20px rgba(144, 202, 249, 0.3)',
+                animation: 'glow 3s ease-in-out infinite alternate'
+              }}
+            >
+              Admin Registration
+            </Typography>
+          </Box>
+
+          <TextField
+            fullWidth
+            label="Full Name"
+            name="name"
+            margin="normal"
+            autoComplete="name"
+            autoFocus
+            value={formData.name}
+            onChange={handleChange}
+            sx={{
+              '& .MuiInputBase-root': {
+                transition: 'transform 0.2s ease',
+                '&:hover': {
+                  transform: 'translateY(-2px)',
+                }
+              },
+              '& .MuiOutlinedInput-root': {
+                '& fieldset': {
+                  borderColor: 'rgba(144, 202, 249, 0.2)',
+                },
+                '&:hover fieldset': {
+                  borderColor: 'rgba(144, 202, 249, 0.4)',
+                }
+              }
+            }}
+          />
+          <TextField
+            fullWidth
+            label="Email Address"
+            name="email"
+            margin="normal"
+            autoComplete="email"
+            value={formData.email}
+            onChange={handleChange}
+            sx={{
+              '& .MuiInputBase-root': {
+                transition: 'transform 0.2s ease',
+                '&:hover': {
+                  transform: 'translateY(-2px)',
+                }
+              },
+              '& .MuiOutlinedInput-root': {
+                '& fieldset': {
+                  borderColor: 'rgba(144, 202, 249, 0.2)',
+                },
+                '&:hover fieldset': {
+                  borderColor: 'rgba(144, 202, 249, 0.4)',
+                }
+              }
+            }}
+          />
+          <TextField
+            fullWidth
+            label="Password"
+            name="password"
+            type="password"
+            margin="normal"
+            autoComplete="new-password"
+            value={formData.password}
+            onChange={handleChange}
+            sx={{
+              '& .MuiInputBase-root': {
+                transition: 'transform 0.2s ease',
+                '&:hover': {
+                  transform: 'translateY(-2px)',
+                }
+              },
+              '& .MuiOutlinedInput-root': {
+                '& fieldset': {
+                  borderColor: 'rgba(144, 202, 249, 0.2)',
+                },
+                '&:hover fieldset': {
+                  borderColor: 'rgba(144, 202, 249, 0.4)',
+                }
+              }
+            }}
+          />
+          <TextField
+            fullWidth
+            label="Confirm Password"
+            name="confirmPassword"
+            type="password"
+            margin="normal"
+            autoComplete="new-password"
+            value={formData.confirmPassword}
+            onChange={handleChange}
+            sx={{
+              '& .MuiInputBase-root': {
+                transition: 'transform 0.2s ease',
+                '&:hover': {
+                  transform: 'translateY(-2px)',
+                }
+              },
+              '& .MuiOutlinedInput-root': {
+                '& fieldset': {
+                  borderColor: 'rgba(144, 202, 249, 0.2)',
+                },
+                '&:hover fieldset': {
+                  borderColor: 'rgba(144, 202, 249, 0.4)',
+                }
+              }
+            }}
+          />
+          <TextField
+            fullWidth
+            label="Admin Registration Code"
+            name="adminCode"
+            type="password"
+            margin="normal"
+            helperText="Enter the secure admin code provided by your organization"
+            value={formData.adminCode}
+            onChange={handleChange}
+            sx={{
+              '& .MuiInputBase-root': {
+                transition: 'transform 0.2s ease',
+                '&:hover': {
+                  transform: 'translateY(-2px)',
+                }
+              },
+              '& .MuiOutlinedInput-root': {
+                '& fieldset': {
+                  borderColor: 'rgba(144, 202, 249, 0.2)',
+                },
+                '&:hover fieldset': {
+                  borderColor: 'rgba(144, 202, 249, 0.4)',
+                }
+              }
+            }}
+          />
+          <Button
+            fullWidth
+            variant="contained"
+            onClick={handleRegister}
+            sx={{
+              mt: 3,
+              mb: 2,
+              background: 'linear-gradient(45deg, #2196F3 30%, #21CBF3 90%)',
+              transform: 'translateZ(0)',
+              transition: 'all 0.2s ease',
+              '&:hover': {
+                transform: 'translateY(-3px) scale(1.02)',
+                boxShadow: '0 5px 15px rgba(144, 202, 249, 0.4)',
+              },
+              '&:active': {
+                transform: 'translateY(0) scale(0.98)',
+              }
+            }}
+          >
+            Register as Admin
+          </Button>
+          <Box sx={{
+            textAlign: 'center',
+            '& a': {
+              color: 'primary.main',
+              transition: 'all 0.2s ease',
+              '&:hover': {
+                textShadow: '0 0 8px rgba(144, 202, 249, 0.6)',
+              }
+            }
+          }}>
+            <Link component={RouterLink} to="/" variant="body2">
+              {"Back to Login"}
+            </Link>
+          </Box>
+        </Card>
+      </Box>
+
+      <style>
+        {`
+          @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+          }
+          @keyframes glow {
+            0% { text-shadow: 0 0 20px rgba(144, 202, 249, 0.3); }
+            100% { text-shadow: 0 0 30px rgba(144, 202, 249, 0.7); }
+          }
+          @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+          }
+        `}
+      </style>
+    </ThemeProvider>
   );
 }
