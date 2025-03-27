@@ -15,7 +15,6 @@ export default function CertificateVerification() {
         issueDate: string;
         course: string;
         grade: string;
-        organization: string;
     } | null>(null);
 
     const handleFileSelect = async (event: React.ChangeEvent<HTMLInputElement>) => {
@@ -237,10 +236,6 @@ export default function CertificateVerification() {
                             <Box sx={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid', borderColor: 'divider', pb: 1 }}>
                                 <Typography variant="body1" color="text.secondary">Name</Typography>
                                 <Typography variant="body1" fontWeight="500">{certificateDetails.name}</Typography>
-                            </Box>
-                            <Box sx={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid', borderColor: 'divider', pb: 1 }}>
-                                <Typography variant="body1" color="text.secondary">Organization</Typography>
-                                <Typography variant="body1" fontWeight="500">{certificateDetails.organization}</Typography>
                             </Box>
                             <Box sx={{ display: 'flex', justifyContent: 'space-between', borderBottom: '1px solid', borderColor: 'divider', pb: 1 }}>
                                 <Typography variant="body1" color="text.secondary">Issue Date</Typography>
