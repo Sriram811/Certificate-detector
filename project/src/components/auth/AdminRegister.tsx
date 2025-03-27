@@ -22,7 +22,7 @@ export default function AdminRegister() {
     }
 
     try {
-      const response = await fetch('http://localhost:5004/api/auth/admin/register', {
+      const response = await fetch('https://certificate-detector-backend.onrender.com/api/auth/admin/register', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({

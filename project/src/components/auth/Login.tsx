@@ -19,7 +19,7 @@ export default function Login({ setLoggedIn, setIsAdmin }: LoginProps) {
 
     try {
       const endpoint = isAdminLogin ? '/api/auth/admin/login' : '/api/auth/login';
-      const response = await fetch(`http://localhost:5004${endpoint}`, {
+      const response = await fetch(`https://certificate-detector-backend.onrender.com${endpoint}`, {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ email, password }),

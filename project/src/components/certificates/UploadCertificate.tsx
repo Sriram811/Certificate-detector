@@ -31,7 +31,7 @@ export default function UploadCertificate({ type, onUpload }: UploadCertificateP
     data.append('type', type);
 
     try {
-      const response = await fetch('http://localhost:5004/api/certificates/upload', {
+      const response = await fetch('https://certificate-detector-backend.onrender.com/api/certificates/upload', {
         method: 'POST',
         body: data,
       });

@@ -20,7 +20,7 @@ interface CertificateListProps {
 export default function CertificateList({ certificates, onRemove }: CertificateListProps) {
   const handleVerify = async (certId: string) => {
     try {
-      const response = await fetch(`http://localhost:5004/api/certificates/verify/${certId}`, {
+      const response = await fetch(`https://certificate-detector-backend.onrender.com/api/certificates/verify/${certId}`, {
         method: 'POST'
       });
 
@@ -81,7 +81,7 @@ export default function CertificateList({ certificates, onRemove }: CertificateL
                     startIcon={<X size={16} />}
                     onClick={async () => {
                       try {
-                        const response = await fetch(`http://localhost:5004/api/certificates/${cert._id}`, {
+                        const response = await fetch(`https://certificate-detector-backend.onrender.com/api/certificates/${cert._id}`, {
                           method: 'DELETE',
                         });
 

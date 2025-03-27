@@ -35,7 +35,7 @@ export default function Admin() {
 
     const fetchCertificates = async () => {
         try {
-            const response = await fetch('http://localhost:5004/api/certificates');
+            const response = await fetch('https://certificate-detector-backend.onrender.com/api/certificates');
             if (response.ok) {
                 const data = await response.json();
                 setCertificates(data);
@@ -50,7 +50,7 @@ export default function Admin() {
             console.log('Deleting certificate with ID:', id);
 
             // Remove credentials and simplify the request
-            const response = await fetch(`http://localhost:5004/api/certificates/${id}`, {
+            const response = await fetch(`https://certificate-detector-backend.onrender.com/api/certificates/${id}`, {
                 method: 'DELETE',
                 headers: {
                     'Content-Type': 'application/json'

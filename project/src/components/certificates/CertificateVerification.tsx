@@ -31,7 +31,7 @@ export default function CertificateVerification() {
 
         try {
             console.log('Sending hash for verification:', certificateHash); // Debug log
-            const response = await fetch('http://localhost:5004/api/certificates/verify-upload', {
+            const response = await fetch('https://certificate-detector-backend.onrender.com/api/certificates/verify-upload', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
