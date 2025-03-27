@@ -15,6 +15,7 @@ export default function CertificateVerification() {
         issueDate: string;
         course: string;
         grade: string;
+        organization: string;
     } | null>(null);
 
     const handleFileSelect = async (event: React.ChangeEvent<HTMLInputElement>) => {
